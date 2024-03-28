@@ -1,0 +1,26 @@
+{% extends 'navbar.html' %}
+{% block additional_content %}
+
+<h3> Available Books</h3>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Sr.No.</th>
+        <th scope="col">Book Name</th>
+        <th scope="col">Auther</th>
+        <th scope="col">Available Copies</th>
+      </tr>
+    </thead>
+    <tbody>
+
+        {% for book in avail_books %}
+        <tr>
+        <th scope="row">{{book.id}}</th>
+        <td>{{book.title}}</td>
+        <td>{{book.author}}</td>
+        <td>{{book.available_copies}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+  {% endblock %}

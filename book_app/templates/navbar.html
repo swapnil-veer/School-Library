@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+<div>
+{% block content %}
+
+
+</div>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+
+    <!-- book image -->
+       <!-- for gap of 10 pxs -->
+       <div style="margin-left: 10px;"></div>
+       <!-- for gap of 10 pxs -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="yellow" class="bi bi-journal" viewBox="0 0 16 16">
+        <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+        <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+      </svg>
+   <!-- for gap of 10 pxs -->
+   <div style="margin-left: 10px;"></div>
+   <!-- for gap of 10 pxs -->
+    <!-- book image -->
+
+
+      <ul class="nav nav-pills ">
+      <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/homepage/' %}active{% endif %}" aria-current="page" href="/homepage/">Home</a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link  {% if request.path == '/book/avail-books/' %}active{% endif %}" href="/book/avail-books/">Available Books</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link  {% if request.path == '#' %}active{% endif %}" href="#">####</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link {% if request.path == '/add-book-form/' %}active{% endif %} dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Form links
+            </a>
+
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Link</a>
+          </li>
+        </ul>
+</ul>
+
+<!-- for right hand side -->
+    <ul class="navbar-nav ms-auto">
+
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-success" type="submit">Search</button>
+        </form>
+
+        <!-- showing user -->
+        <li class="nav-item">
+            <a class="nav-link text-white">Logged In as:- {{user}}</a>
+          </li>
+        <!-- showing user -->
+
+
+             <!-- for gap of 10 pxs -->
+             <div style="margin-left: 10px;"></div>
+             <!-- for gap of 10 pxs -->
+
+{% if user.is_authenticated %}
+    <li class="nav-item">
+        <button class="btn btn-outline-light btn-color-white " aria-current="page" href="#">Sign out</button>
+    </li>
+
+    {% else %}
+            <li class="nav-item">
+                <button class="btn btn-outline-light btn-color-white " aria-current="page" href="#">Sign In</button>
+            </li>
+
+            <!-- for gap of 10 pxs -->
+            <div style="margin-left: 10px;"></div>
+            <!-- for gap of 10 pxs -->
+
+            <li class="nav-item">
+                <button class="btn btn-warning text-black " aria-current="page" href="#">Register</button>
+              </li>
+    {% endif %}
+
+
+          </ul>
+
+      </div>
+    </div>
+  </nav>
+  <br>
+
+<div class="container">
+    {% block additional_content %}
+
+    {% endblock %}
+</div>
+
+{% endblock %}
+
+</div>
+
