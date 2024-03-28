@@ -9,6 +9,9 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+    
+    class Meta:
+        db_table = "book"
 
 class Borrow(models.Model):
     borrower = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -20,4 +23,7 @@ class Borrow(models.Model):
 
     def __str__(self):
         return f"{self.borrower.username} - {self.book.title}"
+    
+    class Meta:
+        db_table = "borrow"
 
