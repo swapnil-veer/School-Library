@@ -17,3 +17,11 @@ class BookListViewTests(TestCase):
 
         self.assertNotContains(response, self.book2.title)
 
+    def test_all_books_list(self):
+        response = self.client.get(reverse('all_books'))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, self.book1.title)
+        self.assertContains(response, self.book2.title)
+
+
