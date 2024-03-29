@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import User
 
 class Book(models.Model):
@@ -14,7 +15,7 @@ class Book(models.Model):
         db_table = "book"
 
 class Borrow(models.Model):
-    borrower = models.ForeignKey(User, on_delete=models.CASCADE)
+    borrower = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     date_borrowed = models.DateField(auto_now_add=True)
     due_date = models.DateField()
