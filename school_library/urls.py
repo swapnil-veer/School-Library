@@ -20,6 +20,7 @@ from book_app.views.views import homepage
 
 urlpatterns = [
     path('',homepage),
+    path("__debug__/", include("debug_toolbar.urls")),
     path('admin/', admin.site.urls),
     path('book/',include('book_app.urls')),
     path('user/',include('users.urls')),

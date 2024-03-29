@@ -24,8 +24,9 @@
       <ul class="nav nav-pills ">
       <div class="collapse navbar-collapse" id="navbarScroll">
         <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+
           <li class="nav-item">
-            <a class="nav-link {% if request.path == '/homepage/' %}active{% endif %}" aria-current="page" href="/homepage/">Home</a>
+            <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="/">Home</a>
           </li>
 
 
@@ -81,15 +82,12 @@
 
     {% else %}
             <li class="nav-item">
-                <button class="btn btn-outline-light btn-color-white " aria-current="page" href="#">Sign In</button>
+              <a class="btn btn-outline-light btn-color-white" href="/user/signin">Sign In</a>>
             </li>
 
-            <!-- for gap of 10 pxs -->
-            <div style="margin-left: 10px;"></div>
-            <!-- for gap of 10 pxs -->
 
             <li class="nav-item">
-                <button class="btn btn-warning text-black " aria-current="page" href="#">Register</button>
+                <a class="btn btn-warning text-black " aria-current="page" href='/user/register'>Register</a>
               </li>
     {% endif %}
 
