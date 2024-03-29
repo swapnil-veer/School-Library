@@ -22,7 +22,7 @@ class Borrow(models.Model):
 
 
     def __str__(self):
-        return f"{self.borrower.username} - {self.book.title}"
+        return f"{self.borrower.username} - {self.book.title} - {self.due_date}"
     
     class Meta:
         db_table = "borrow"
