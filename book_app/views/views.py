@@ -2,6 +2,8 @@ from django.shortcuts import render
 from ..models import Book, Borrow
 from django.db import connection
 
+def homepage(request):
+     return render(request,"homepage.html")
 def available_book_list(request):
     avail_books = Book.objects.filter(available_copies__gt = 0)
     return render(request, "available_books.html", {"avail_books": avail_books})

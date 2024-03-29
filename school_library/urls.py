@@ -16,8 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from book_app.views.views import homepage
 
 urlpatterns = [
+    path('',homepage),
     path('admin/', admin.site.urls),
     path('book/',include('book_app.urls')),
+    path('user/',include('users.urls')),
 ]
