@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Book, Borrow
+from ..models import Book, Borrow
 from django.db import connection
 
 def available_book_list(request):
