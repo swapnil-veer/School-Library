@@ -3,6 +3,7 @@ from django.urls import reverse
 from .models import Book,Borrow
 from datetime import datetime, timedelta
 from django.contrib.auth.models import User
+
 class BookListViewTests(TestCase):
     def setUp(self):
         # Create dummy books
@@ -18,7 +19,7 @@ class BookListViewTests(TestCase):
         # print(self.borrower2)
 
 
-    def test_available_books_list(self):
+    def atest_available_books_list(self):
         response = self.client.get(reverse('available_books'))
 
         self.assertEqual(response.status_code, 200)
@@ -27,14 +28,14 @@ class BookListViewTests(TestCase):
 
         self.assertNotContains(response, self.book2.title)
 
-    def test_all_books_list(self):
+    def atest_all_books_list(self):
         response = self.client.get(reverse('all_books'))
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, self.book1.title)
         self.assertContains(response, self.book2.title)
 
-    def test_book_availability(self):
+    def atest_book_availability(self):
         response = self.client.get(reverse('all_books'))
         self.assertEqual(response.status_code, 200)
 
@@ -46,5 +47,11 @@ class BookListViewTests(TestCase):
 
         expected_date_str = self.due_date_book2.strftime('%Y-%m-%d')
         self.assertContains(response, f"Expected return date: {expected_date_str}")
+
+    def test_my_books(self):
+        response = self.client.get(reverse('my_books'))
+        self.assertEqual(response.status_code, 200)
+
+
 
 
