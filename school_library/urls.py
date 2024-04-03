@@ -19,7 +19,7 @@ from django.urls import path, include
 from book_app.views.views import homepage
 
 urlpatterns = [
-    path('',homepage),
+    path('',homepage,name="homepage"),
     path("__debug__/", include("debug_toolbar.urls")),
     path('admin/', admin.site.urls),
     path('book/',include('book_app.urls')),

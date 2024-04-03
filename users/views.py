@@ -36,7 +36,7 @@ def user_login(request):
             if user:
                 login(request,user)
                 messages.success(request, "Logged in successfully...!")
-                return redirect("home_page")
+                return redirect("homepage")
         else:
             messages.error(request,"Invalid credentials.!")
         # return redirect("home_page")
@@ -48,4 +48,4 @@ def user_login(request):
     
 def user_logout(request):
     logout(request)
-    return redirect("user_login")
+    return redirect("user_signin")

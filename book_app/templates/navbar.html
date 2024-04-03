@@ -76,8 +76,9 @@
              <!-- for gap of 10 pxs -->
 
 {% if user.is_authenticated %}
+
     <li class="nav-item">
-        <button class="btn btn-outline-light btn-color-white " aria-current="page" href="#">Sign out</button>
+      <a class="btn btn-outline-light btn-color-white" href="/user/sign-out">Sign Out</a>>
     </li>
 
     {% else %}
