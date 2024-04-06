@@ -1,0 +1,28 @@
+{% extends 'navbar.html' %}
+{% block additional_content %}
+
+<h3> Borrowed Books</h3>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Student.No.</th>
+        <th scope="col">Student Name</th>
+        <th scope="col">Book Name</th>
+        <th scope="col">Due Date</th>
+      </tr>
+    </thead>
+    <tbody>
+
+        {% for borrow in borrowed_books %}
+        <tr>
+        <th scope="row">{{borrow.borrower.id}}</th>
+        <td>{{borrow.borrower}}</td>
+        <td>{{borrow.book}}</td>
+        <td>{{borrow.due_date}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+
+  {% endblock %}
