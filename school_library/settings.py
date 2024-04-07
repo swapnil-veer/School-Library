@@ -37,11 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'book_app',
     'users',
     'crispy_forms',
     'crispy_bootstrap5',
-    "debug_toolbar",
 ]
 
 MIDDLEWARE = [
@@ -144,3 +144,9 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 LOGIN_URL = 'user_signin'
 LOGIN_REDIRECT_URL = 'user_signin' 
+
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]

@@ -43,17 +43,21 @@
           </li>
 {% endif %}
 
-          <li class="nav-item dropdown">
-            <a class="nav-link {% if request.path == '/add-book-form/' %}active{% endif %} dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Form links
-            </a>
-
+{% if user.is_superuser %}
+          <li class="nav-item">
+            <a class="nav-link  {% if request.path == '/book/borrowed-books/' %}active{% endif %}" href="/book/borrowed-books/">Borrowed Books</a>
           </li>
-
 
           <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Link</a>
+            <a class="nav-link  {% if request.path == '/book/add-book/' %}active{% endif %}" href="/book/add-book/">Add Book</a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link  {% if request.path == '/book/add-to-borrow/' %}active{% endif %}" href="/book/add-to-borrow/">Add To Borrow</a>
+          </li>
+
+{% endif %}
+
         </ul>
 </ul>
 
