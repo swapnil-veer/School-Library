@@ -21,7 +21,7 @@ class BookListViewTests(TestCase):
         # print(self.borrower2)
 
 
-    def atest_available_books_list(self):
+    def test_available_books_list(self):
         response = self.client.get(reverse('available_books'))
 
         self.assertEqual(response.status_code, 200)
@@ -30,14 +30,14 @@ class BookListViewTests(TestCase):
 
         self.assertNotContains(response, self.book2.title)
 
-    def atest_all_books_list(self):
+    def test_all_books_list(self):
         response = self.client.get(reverse('all_books'))
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, self.book1.title)
         self.assertContains(response, self.book2.title)
 
-    def atest_book_availability(self):
+    def test_book_availability(self):
         response = self.client.get(reverse('all_books'))
         self.assertEqual(response.status_code, 200)
 
@@ -50,13 +50,14 @@ class BookListViewTests(TestCase):
         expected_date_str = self.due_date_book2.strftime('%Y-%m-%d')
         self.assertContains(response, f"Expected return date: {expected_date_str}")
 
-    def atest_my_books(self):
+    def test_my_books(self):
         self.client.login(email="lennon@thebeatles.com", password="johnpassword")
         response = self.client.get(reverse('my_books'))
         self.assertEqual(response.status_code, 200)
         # self.assertContains(response, "Book1")
 
-    def atest_non_student_access_my_books(self):
+    def test_non_student_access_my_books(self):
+        self.client.login(email="lennohn@thebeatles.com", password="johnjjpassword")
         response=self.client.get(reverse('my_books'))
         self.assertEqual(response.status_code, 403)
 
@@ -65,6 +66,16 @@ class BookListViewTests(TestCase):
         self.client.session['_auth_user_id']
         response=self.client.get(reverse('borrow_books'))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "user1")
+        for borrow in response.context['page_obj']:
+            self.assertEqual(borrow.borrower.email, "lennon@thebeatles.com")
+
+    def test_view_pagination(self):
+        # Test pagination in a view
+        self.client.login(email="superuser@example.com", password = "adminpassword")
+
+        response = self.client.get(reverse('borrow_books'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue('page_obj' in response.context)
+        
 
 
