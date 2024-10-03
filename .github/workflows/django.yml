@@ -1,0 +1,52 @@
+name: Django CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [3.7, 3.8, 3.9]
+
+    steps:
+    # Step 1: Checkout the code
+    - uses: actions/checkout@v4
+
+    # Step 2: Set up Python
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    # Step 3: Install dependencies
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    # Step 4: Run Pylint (Linting)
+    - name: Install and Run Pylint
+      run: |
+        pip install pylint
+        pylint your_project_name/ --exit-zero
+
+    # Step 5: SonarQube Scan (Static Code Analysis)
+    - name: SonarQube Scan
+      uses: SonarSource/sonarcloud-github-action@v1.6
+      with:
+        sonar_token: ${{ secrets.SONAR_TOKEN }}
+        projectKey: your_project_key
+        organization: your_organization_key
+        scannerMode: CLI
+
+    # Step 6: Run Unit Tests
+    - name: Run Tests
+      run: |
+        python manage.py test
