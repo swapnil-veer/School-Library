@@ -16,7 +16,7 @@ jobs:
 
     steps:
       # Step 1: Set up Node.js (if required for frontend tasks or any Node dependencies)
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
 
