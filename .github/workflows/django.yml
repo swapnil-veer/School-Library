@@ -40,7 +40,7 @@ jobs:
       - name: Install and Run Pylint
         run: |
           pip install pylint
-          pylint your_project_name/ --exit-zero
+          pylint School-Library/ --exit-zero
 
       # Step 6: SonarQube Scan (Static Code Analysis)
       # - name: SonarQube Scan
