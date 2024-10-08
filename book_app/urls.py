@@ -2,7 +2,7 @@ from django.urls import path
 from .views.views import available_book_list, book_list
 from .views.student_views import my_books
 from .views.librarian_views import borrowed_books, add_to_borrow
-from .views.librarian_views import AddBookView, AddToBorrow
+from .views.librarian_views import AddBookView
 
 urlpatterns = [
     path('avail-books/', available_book_list, name= 'available_books'),
