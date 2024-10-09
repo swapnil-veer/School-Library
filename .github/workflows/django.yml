@@ -60,7 +60,8 @@ jobs:
           args: >
               -Dsonar.organization=swapnil-veer
               -Dsonar.projectKey=School-Library
-              -Dsonar.python.coverage.reportPaths=coverage.xml
+              -Dsonar.sources=.
+          # -Dsonar.python.coverage.reportPaths=coverage.xml
       # Step 7: Run Unit Tests
       - name: Run Tests
         run: |
