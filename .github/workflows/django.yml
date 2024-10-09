@@ -43,13 +43,13 @@ jobs:
           pylint school_library/ --exit-zero
 
       # Step 6: SonarQube Scan (Static Code Analysis)
-      # - name: SonarQube Scan
-      #   uses: SonarSource/sonarcloud-github-action@v1.6
-      #   with:
-      #     sonar_token: ${{ secrets.SONAR_TOKEN }}
-      #     projectKey: your_project_key
-      #     organization: your_organization_key
-      #     scannerMode: CLI
+      - name: SonarQube Scan
+        uses: SonarSource/sonarcloud-github-action@v1.6
+        with:
+          sonar_token: ${{ secrets.SONAR_TOKEN }}
+          projectKey: School-Library
+          organization: swapnil-veer
+          scannerMode: CLI
 
       # Step 7: Run Unit Tests
       - name: Run Tests
